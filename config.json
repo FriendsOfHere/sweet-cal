@@ -1,0 +1,16 @@
+{
+   "name": "小历",
+   "version": "1.0.0",
+   "identifier": "app.here.tinycal",
+   "description": "A simple cal tool",
+   "icon": "icon.png",
+   "createdBy": "Lifesign",
+   "website": "https://github.com/FriendsOfHere/tinycal",
+   "script": "index.js",
+   "defaultCategory": "quick",
+   "displayOn": [
+      "mini",
+      "menuBar",
+      "dock"
+   ]
+}
