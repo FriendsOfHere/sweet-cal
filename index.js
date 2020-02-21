@@ -7,23 +7,34 @@
  * file that was distributed with this source code.
  */
 
+const pref = require("pref")
+const moment = require("moment")
+const net = require("net")
+const config = require("./config.json")
+
+function getCustomTimeFormat() {
+    const DEFAULT_TIME_FORMAT = "YYYY-MM-DD HH:mm";
+    let timeFormat = pref.get("custom-time-format");
+
+    return timeFormat == undefined || timeFormat == "" ? DEFAULT_TIME_FORMAT : timeFormat
+}
+
 function updateData() {
 
-    //miniWindow    
-    here.setMiniWindow({ title: "Hello MiniWindow", detail: "This is a demo here plugin" })
+    let timeFormat = getCustomTimeFormat()
+    //if (!moment("", timeFormat).isValid()) {
+        // here.systemNotification(`"【插件】${config.name}"`, `时间格式【${timeFormat}】配置有误`)
+    //}
 
     // Menu Bar
-    here.setMenuBar({ title: "Hello MenuBar"})
-
-    // Dock
-    here.setDock({ title: "Hello Dock" })
+    here.setMenuBar({ title: moment().format(timeFormat)})
         
 }
 
 here.onLoad(() => {
     updateData()
-    // Update every 2 hours
-    setInterval(updateData, 2*3600*1000);
+    // Update every 1 min
+    setInterval(updateData, 1000*60);
 })
 
 net.onChange((type) => {

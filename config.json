@@ -9,8 +9,16 @@
    "script": "index.js",
    "defaultCategory": "quick",
    "displayOn": [
-      "mini",
       "menuBar",
+      "mini",
       "dock"
+   ],
+   "preferences": [
+      {
+          "title": "自定义格式",
+          "type": "text",
+          "key": "custom-time-format",
+          "default": ""
+      }
    ]
 }
