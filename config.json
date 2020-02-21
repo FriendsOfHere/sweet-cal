@@ -6,12 +6,11 @@
    "icon": "icon.png",
    "createdBy": "Lifesign",
    "website": "https://github.com/FriendsOfHere/tinycal",
+   "appcast": "https://raw.githubusercontent.com/FriendsOfHere/tinycal/master/appcast.xml",
    "script": "index.js",
    "defaultCategory": "quick",
    "displayOn": [
       "menuBar",
-      "mini",
-      "dock"
    ],
    "preferences": [
       {
