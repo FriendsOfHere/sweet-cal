@@ -14,10 +14,31 @@
    ],
    "preferences": [
       {
-          "title": "自定义格式",
-          "type": "text",
-          "key": "custom-time-format",
-          "default": ""
-      }
+         "title": "自定义格式",
+         "type": "text",
+         "key": "custom-time-format",
+         "default": ""
+      },
+      {
+         "title": "农历",
+         "type": "popup",
+         "key": "lunarFormat",
+         "default": 0,
+         "options": [
+             "关闭",
+             "初五",
+             "正月初五"
+         ]
+      },
+      {
+         "title": "生肖",
+         "type": "popup",
+         "key": "animalYear",
+         "default": 0,
+         "options": [
+             "关闭",
+             "开启",
+         ]
+      },
    ]
 }

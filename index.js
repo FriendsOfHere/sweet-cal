@@ -6,11 +6,12 @@
  * For the full copyright and license information, please view the LICENSE.md
  * file that was distributed with this source code.
  */
-
+const _ = require("lodash")
 const pref = require("pref")
 const moment = require("moment")
 const net = require("net")
 const config = require("./config.json")
+const lunarTool = require("./solarlunar.min.js")
 
 function getCustomTimeFormat() {
     const DEFAULT_TIME_FORMAT = "YYYY-MM-DD HH:mm";
@@ -19,16 +20,37 @@ function getCustomTimeFormat() {
     return timeFormat == undefined || timeFormat == "" ? DEFAULT_TIME_FORMAT : timeFormat
 }
 
+function getLunarFormat() {
+    return _.toSafeInteger(pref.get("lunarFormat"))
+}
+
+function isAnimalYearEnable() {
+    return _.toSafeInteger(pref.get("animalYear")) == 1
+}
+
 function updateData() {
 
     let timeFormat = getCustomTimeFormat()
     //if (!moment("", timeFormat).isValid()) {
         // here.systemNotification(`"【插件】${config.name}"`, `时间格式【${timeFormat}】配置有误`)
     //}
+    let suffix = ""
+    let lunar = lunarTool.solar2lunar(moment().year(), moment().months() + 1, moment().date())
+    let lunarOption = getLunarFormat()
+
+    //lunar
+    if (_.includes([1,2], lunarOption)) {
+        //console.log(`${moment().year()} ${moment().months()} ${moment().date()}`)
+        //console.log(JSON.stringify(lunarTool.solar2lunar(moment().year(), moment().months() + 1, moment().date())))
+        suffix = lunarOption == 1 ? lunar.dayCn : `${lunar.monthCn}${lunar.dayCn}`
+    }
+
+    //animal year
+    if (isAnimalYearEnable()) suffix = `${suffix} ${lunar.animal}年`
 
     // Menu Bar
-    here.setMenuBar({ title: moment().format(timeFormat)})
-        
+    let menuBarTime = `${moment().format(timeFormat)} ${suffix}`
+    here.setMenuBar({ title: menuBarTime})
 }
 
 here.onLoad(() => {
