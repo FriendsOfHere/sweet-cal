@@ -4,8 +4,8 @@
     <channel>
         <item>
             <enclosure url="https://github.com/FriendsOfHere/tinycal
-/releases/download/1.1.0/app.here.tinycal
-.hereplugin" sparkle:version="1.1.0"/>
+/releases/download/1.1.1/TinyCal
+.hereplugin" sparkle:version="1.1.1"/>
         </item>
     </channel>
 </rss>

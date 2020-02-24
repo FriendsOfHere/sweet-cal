@@ -7,11 +7,11 @@ A [Here](http://here.app/) plugin. A simple cal tool
 ## Installation
 
 ### One Click  (Recommend)
-👉 <a href="https://jump.here.app/?installPlugin?title=tinycal&url=https://github.com/FriendsOfHere/tinycal/releases/latest/download/app.here.tinycal.hereplugin">Click Here 🔌</a>
+👉 <a href="https://jump.here.app/?installPlugin?title=TinyCal&url=https://github.com/FriendsOfHere/tinycal/releases/latest/download/TinyCal.hereplugin">Click Here 🔌</a>
 
 ### Manually
 1. Go [releases](https://github.com/FriendsOfHere/tinycal/releases/latest/) page
-2. Download the latest release & double click the `app.here.tinycal.hereplugin`
+2. Download the latest release & double click the `TinyCal.hereplugin`
 
 ### Usage
 1. Go preference
