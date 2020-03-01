@@ -54,7 +54,6 @@ function updateData() {
 
     //popover api
     if (typeof(here.setPopover) == "function") {
-        //detect dark mode
         here.exec('defaults read -g AppleInterfaceStyle /dev/null 2>&1')
               .then((output) => {
                 console.log(`Get dark mode: ${output}`)
@@ -68,7 +67,8 @@ function updateData() {
                 here.setPopover({
                     "type": "webView",
                     "data": {
-                        url: `http://localhost:10010?isDark=${isDark}`,
+                        // url: `http://localhost:10010?isDark=${isDark}`,
+                        url: './server/index.html',
                         width: 320,
                         height: 300,
                         // backgroundColor: "#FAF8EF",
@@ -76,12 +76,16 @@ function updateData() {
                     }
                 })
             }).catch((err) => {console.err(`detect dark mode error : ${err}`)})
-        }
     }
+}
 
 
 here.onLoad(() => {
-    ensureLocalServerRunning()
+    /**
+     * Dark mode can use css to auto switch
+     * the local server logic can be omitted for now
+     */
+    // ensureLocalServerRunning()
     updateData()
     // Update every 1 min
     setInterval(updateData, 1000*60);
