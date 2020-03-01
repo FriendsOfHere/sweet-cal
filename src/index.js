@@ -57,12 +57,14 @@ function updateData() {
         //detect dark mode
         here.exec('defaults read -g AppleInterfaceStyle /dev/null 2>&1')
               .then((output) => {
+                console.log(`Get dark mode: ${output}`)
                 let isDark = 1;
                 //due to a nightly version length bug
                 if (output.indexOf("Dark") == -1) {
                   isDark = 0
                 }
 
+                console.log('setting popover...')
                 here.setPopover({
                     "type": "webView",
                     "data": {
