@@ -51,7 +51,32 @@ function updateData() {
     // Menu Bar
     let menuBarTime = `${moment().format(timeFormat)} ${suffix}`
     here.setMenuBar({ title: menuBarTime})
-}
+
+    //popover api
+    if (typeof(here.setPopover) == "function") {
+        //detect dark mode
+        here.exec('defaults read -g AppleInterfaceStyle /dev/null 2>&1')
+              .then((output) => {
+                let isDark = 1;
+                //due to a nightly version length bug
+                if (output.indexOf("Dark") == -1) {
+                  isDark = 0
+                }
+
+                here.setPopover({
+                    "type": "webView",
+                    "data": {
+                        url: `http://localhost:10010?isDark=${isDark}`,
+                        width: 320,
+                        height: 300,
+                        // backgroundColor: "#FAF8EF",
+                        backgroundColor: `${isDark == 1 ? '#1A202C' : '#FEFEFE'}`
+                    }
+                })
+            }).catch((err) => {console.err(`detect dark mode error : ${err}`)})
+        }
+    }
+
 
 here.onLoad(() => {
     updateData()
