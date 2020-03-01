@@ -79,10 +79,26 @@ function updateData() {
 
 
 here.onLoad(() => {
+    ensureLocalServerRunning()
     updateData()
     // Update every 1 min
     setInterval(updateData, 1000*60);
 })
+
+function ensureLocalServerRunning() {
+    here.exec(`ps -ef | grep php | grep -v grep | grep localhost:10010 | awk '{print $2}'`)
+    .then((output) => {
+        const pid = _.trimEnd(output, "\n")
+        console.log(`get php local server pid: ${output}`)
+        //restart a php local server
+        if (pid == '') {
+            here.exec(`php -S localhost:10010 -t ./server`)
+            .then((output) => {
+              console.log(`PHP local server start listening on 10010.. output: ${output}`)
+            }).catch((err) => { console.error(`start php local server err: ${err}`)})
+        }
+    }).catch((err) => {console.error(err)})
+}
 
 net.onChange((type) => {
     console.log("Connection type changed:", type)
