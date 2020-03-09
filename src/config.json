@@ -1,12 +1,12 @@
 {
-   "name": "小历",
-   "version": "1.1.1",
-   "identifier": "foh.tinycal",
-   "description": "A simple cal tool",
+   "name": "Sweet Cal",
+   "version": "1.2.0",
+   "identifier": "foh.sweet-cal",
+   "description": "A tiny sweet cal.",
    "icon": "icon.png",
    "createdBy": "Lifesign",
-   "website": "https://github.com/FriendsOfHere/tinycal",
-   "appcast": "https://raw.githubusercontent.com/FriendsOfHere/tinycal/master/src/appcast.xml",
+   "website": "https://github.com/FriendsOfHere/sweet-cal",
+   "appcast": "https://raw.githubusercontent.com/FriendsOfHere/sweet-cal/master/src/appcast.xml",
    "script": "index.js",
    "defaultCategory": "quick",
    "displayOn": [

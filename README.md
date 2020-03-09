@@ -1,17 +1,19 @@
-# 小历
+# Sweet Cal
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-A [Here](http://here.app/) plugin. A simple cal tool
+![screenshot](./media/screenshot.jpg)
+
+A tiny sweet calendar [Here](http://here.app/) plugin.
 
 ## Installation
 
 ### One Click  (Recommend)
-👉 <a href="https://jump.here.app/?installPlugin?title=TinyCal&url=https://github.com/FriendsOfHere/tinycal/releases/latest/download/TinyCal.hereplugin">Click Here 🔌</a>
+👉 <a href="https://jump.here.app/?installPlugin?title=SweetCal&url=https://github.com/FriendsOfHere/sweet-cal/releases/latest/download/Sweet-Cal.hereplugin">Click Here 🔌</a>
 
 ### Manually
-1. Go [releases](https://github.com/FriendsOfHere/tinycal/releases/latest/) page
-2. Download the latest release & double click the `TinyCal.hereplugin`
+1. Go [releases](https://github.com/FriendsOfHere/sweet-cal/releases/latest/) page
+2. Download the latest release & double click the `Sweet-Cal.hereplugin`
 
 ### Usage
 1. Go preference

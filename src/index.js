@@ -1,5 +1,5 @@
 /*
- * This file is part of app.here.tinycal.
+ * This file is part of foh.sweet-cal.
  *
  * Copyright (c) 2020 Lifesign.
  *
@@ -50,14 +50,62 @@ function updateData() {
 
     // Menu Bar
     let menuBarTime = `${moment().format(timeFormat)} ${suffix}`
-    here.setMenuBar({ title: menuBarTime})
+    here.menuBar.set({ title: menuBarTime})
+
+    //popover api
+    if (typeof(here.popover) != "undefined") {
+        here.exec('defaults read -g AppleInterfaceStyle /dev/null 2>&1')
+              .then((output) => {
+                console.log(`Get dark mode: ${output}`)
+                let isDark = 1;
+                //due to a nightly version length bug
+                if (output.indexOf("Dark") == -1) {
+                  isDark = 0
+                }
+
+                console.log('setting popover...')
+                here.popover.set({
+                    "type": "webView",
+                    "data": {
+                        // url: `http://localhost:10010?isDark=${isDark}`,
+                        url: './server/index.html',
+                        width: 320,
+                        height: 300,
+                        // backgroundColor: "#FAF8EF",
+                        backgroundColor: `${isDark == 1 ? '#1A202C' : '#FEFEFE'}`,
+                        hideStatusBar: true
+                    }
+                })
+            }).catch((err) => {console.err(`detect dark mode error : ${err}`)})
+    }
 }
 
+
 here.onLoad(() => {
+    /**
+     * Dark mode can use css to auto switch
+     * the local server logic can be omitted for now
+     */
+    // ensureLocalServerRunning()
     updateData()
     // Update every 1 min
     setInterval(updateData, 1000*60);
 })
+
+function ensureLocalServerRunning() {
+    here.exec(`ps -ef | grep php | grep -v grep | grep localhost:10010 | awk '{print $2}'`)
+    .then((output) => {
+        const pid = _.trimEnd(output, "\n")
+        console.log(`get php local server pid: ${output}`)
+        //restart a php local server
+        if (pid == '') {
+            here.exec(`php -S localhost:10010 -t ./server`)
+            .then((output) => {
+              console.log(`PHP local server start listening on 10010.. output: ${output}`)
+            }).catch((err) => { console.error(`start php local server err: ${err}`)})
+        }
+    }).catch((err) => {console.error(err)})
+}
 
 net.onChange((type) => {
     console.log("Connection type changed:", type)
