@@ -1,5 +1,5 @@
 /*
- * This file is part of app.here.tinycal.
+ * This file is part of foh.sweet-cal.
  *
  * Copyright (c) 2020 Lifesign.
  *
