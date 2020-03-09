@@ -1,8 +1,10 @@
-# 小历
+# Sweet Cal
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-A [Here](http://here.app/) plugin. A simple cal tool
+![screenshot](./media/screenshot.jpg)
+
+A tiny sweet calendar [Here](http://here.app/) plugin.
 
 ## Installation
 
