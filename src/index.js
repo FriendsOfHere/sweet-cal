@@ -72,7 +72,8 @@ function updateData() {
                         width: 320,
                         height: 300,
                         // backgroundColor: "#FAF8EF",
-                        backgroundColor: `${isDark == 1 ? '#1A202C' : '#FEFEFE'}`
+                        backgroundColor: `${isDark == 1 ? '#1A202C' : '#FEFEFE'}`,
+                        hideStatusBar: true
                     }
                 })
             }).catch((err) => {console.err(`detect dark mode error : ${err}`)})
