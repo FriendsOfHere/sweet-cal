@@ -50,10 +50,10 @@ function updateData() {
 
     // Menu Bar
     let menuBarTime = `${moment().format(timeFormat)} ${suffix}`
-    here.setMenuBar({ title: menuBarTime})
+    here.menuBar.set({ title: menuBarTime})
 
     //popover api
-    if (typeof(here.setPopover) == "function") {
+    if (typeof(here.popover) != "undefined") {
         here.exec('defaults read -g AppleInterfaceStyle /dev/null 2>&1')
               .then((output) => {
                 console.log(`Get dark mode: ${output}`)
@@ -64,7 +64,7 @@ function updateData() {
                 }
 
                 console.log('setting popover...')
-                here.setPopover({
+                here.popover.set({
                     "type": "webView",
                     "data": {
                         // url: `http://localhost:10010?isDark=${isDark}`,
